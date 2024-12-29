@@ -4,6 +4,7 @@ import { fetchTasks, deleteTask, toggleTaskStatus, setFilter } from '../redux/ta
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import EditTask from './EditTask';
+import LoadingSpinner from './LoadingSpinner';
 
 const TaskList = () => {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ const TaskList = () => {
     return filter === 'completed' ? task.status : !task.status;
   });
 
-  if (status === 'loading') return <p>Loading...</p>;
+  if (status === 'loading') return <LoadingSpinner />;
   if (status === 'failed') return <p>{error}</p>;
 
   return (
